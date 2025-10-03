@@ -10,7 +10,8 @@
 
     <!-- Open Graph (used by Facebook, Discord, LinkedIn, etc.) -->
     <meta property="og:title" content="ACTools Services">
-    <meta property="og:description" content="Professional scripting services for Assetto Corsa. Lock and encrypt your cars and maps to prevent unauthorized use on unlicensed servers.">
+    <meta property="og:description"
+        content="Professional scripting services for Assetto Corsa. Lock and encrypt your cars and maps to prevent unauthorized use on unlicensed servers.">
     <meta property="og:image" content="https://raw.githubusercontent.com/Slluxx/actools/refs/heads/main/embed.jpg">
     <meta property="og:url" content="https://slluxx.github.io/actools/">
     <meta property="og:type" content="website">
@@ -32,6 +33,49 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .card {
+            position: relative;
+            overflow: visible;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            left: 7px;
+            right: 7px;
+            top: 100%;
+            height: 0.1rem;
+            border-radius: 0;
+            background: linear-gradient(90deg in oklch,
+                    hsl(202, 61%, 31%),
+                    hsl(216, 76%, 79%),
+                    hsl(202, 61%, 31%),
+                    hsl(216, 76%, 79%));
+            background-size: 300% 100%;
+            /* make it much wider */
+            background-repeat: repeat-x;
+            filter: blur(0.3rem);
+            opacity: 1;
+            z-index: -1;
+
+            /* Animate like LED flow */
+            animation: led-move 3s linear infinite;
+        }
+
+        @keyframes led-move {
+            from {
+                background-position: 100% 0;
+            }
+
+            to {
+                background-position: 0% 0;
+            }
+        }
+
+        article a {
+            text-decoration: none;
         }
     </style>
 
@@ -116,7 +160,7 @@
         <h1>ACTools Services</h1>
 
         <div class="grid mb-5">
-            <article>
+            <article class="card">
                 <h4>Map Lock & Encryption</h4>
                 <ul>
                     <li>Prevent unauthorized use of your maps on unlicensed servers</li>
@@ -125,7 +169,7 @@
                     <li>Price: 50$ per Map</li>
                 </ul>
             </article>
-            <article>
+            <article class="card">
                 <h4>Car Lock & Encryption</h4>
                 <ul>
                     <li>Prevent unauthorized use of your cars on unlicensed servers</li>
@@ -133,7 +177,7 @@
                     <li>No performance impact</li>
                     <li>Price: 50$ per Car</li>
             </article>
-            <article>
+            <article class="card">
                 <h4>Custom Scripts</h4>
                 <ul>
                     <li>Custom AC or CSP scripts to enhance your car's or map's functionality</li>
@@ -143,7 +187,7 @@
             </article>
         </div>
 
-        <article>
+        <article class="card">
             <div class="contact">
                 <div>
                     Contact me on <a href="https://discord.gg/UXf78EQ8yC" target="_blank">Discord</a> (username:
@@ -153,7 +197,7 @@
 
         </article>
 
-        <hr />
+        <hr style="margin-top: 3rem;"/>
 
         <h3>FAQ</h3>
 
