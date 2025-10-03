@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
+
+    <style>
+        article details {
+            margin-bottom: unset;
+        }
+
+        details p {
+            margin-bottom: unset;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <script>
+        let faq = {
+            "General": [
+                {
+                    "question": "What does locking a car/map actually prevent?",
+                    "answer": "Locking your mod prevents it from being hosted on unlicensed servers. If someone tries, the game will freeze or crash. Players can still use your content in singleplayer without any issues."
+                },
+                {
+                    "question": "Can locked content still be stolen or cracked?",
+                    "answer": "Locking also encrypts your files using CSP's system. As long as CSP's encryption holds, your content is safe from extraction or tampering. Nothing is 100% uncrackable, but this protection should last longer than you probably care."
+                },
+                {
+                    "question": "How many servers can use my locked content?",
+                    "answer": "As many as you wish. Currently we hardcode a list of authorized server IP and ports into the locked files. You can provide me with a list of servers that are allowed to use your content, and I will include them when locking. If you need to add or remove servers, the maps have to be locked again with a new set of servers. We are working on a Key-System that will allow you to manage authorized servers yourself, but it is not ready yet."
+                },
+                {
+                    "question": "What versions of Assetto Corsa / CSP are supported?",
+                    "answer": "Any recent version should work fine. I am not aware of any limitations."
+                }
+            ],
+            "Usage": [
+                {
+                    "question": "What do players need installed to use a locked car/map?",
+                    "answer": "All they need is CSP. Nothing else is required."
+                },
+                {
+                    "question": "Will encryption affect game performance?",
+                    "answer": "No, performance is not affected."
+                }
+            ],
+            "Support & Updates": [
+                {
+                    "question": "Can I unlock or update my content later?",
+                    "answer": "Once locked, the files cannot be edited. To make updates, you must use your original files and lock them again (I do not offer updates, re-locking your content means purchasing the service again). Always keep a safe copy of your original work."
+                },
+                {
+                    "question": "What happens if I lose my original unlocked files?",
+                    "answer": "Then your work is gone for good. A locked file cannot be unlocked or recovered. Please keep backups of your original files in a safe place."
+                },
+                {
+                    "question": "Do you provide updates if CSP/AC changes break something?",
+                    "answer": "I will do my best to help. It is very unlikely that a CSP or AC update will break encryption since it would affect thousands of mods. If it ever happens, I will try to provide a fix."
+                }
+            ]
+        }
+
+        let articleTemplate = (section, qa, index) => `
+            <article>
+                <details name="faq">
+                    <summary><a>${qa.question}</a></summary>
+                    <hr />
+                    <p>${qa.answer}</p>
+                </details>
+            </article>
+        `
+
+        // ${index === 0 ? 'open' : ''}
+        let sectionTemplate = (section, qas, index) => `
+            <details name="${section}" open>
+                <summary>
+                    <span><b>${section}</b></span>
+                </summary>
+                ${qas.map((qa, i) => articleTemplate(section, qa, i)).join('')}
+            </details>
+        `
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let faqDiv = document.getElementById("faq")
+            Object.entries(faq).forEach(([section, qas], index) => {
+                faqDiv.innerHTML += sectionTemplate(section, qas, index)
+            });
+        })
+
+    </script>
+</head>
+<title>ACTools Services</title>
+</head>
+
+<body>
+    <main class="container">
+        <h1>ACTools Services</h1>
+
+        <div class="grid mb-5">
+            <article>
+                <h4>Map Lock & Encryption</h4>
+                <ul>
+                    <li>Prevent unauthorized use of your maps on unlicensed servers</li>
+                    <li>Encrypt map files to protect against extraction or tampering</li>
+                    <li>No performance impact</li>
+                    <li>Price: 50$ per Map</li>
+                </ul>
+            </article>
+            <article>
+                <h4>Car Lock & Encryption</h4>
+                <ul>
+                    <li>Prevent unauthorized use of your cars on unlicensed servers</li>
+                    <li>Encrypt car files to protect against extraction or tampering</li>
+                    <li>No performance impact</li>
+                    <li>Price: 50$ per Car</li>
+            </article>
+            <article>
+                <h4>Custom Scripts</h4>
+                <ul>
+                    <li>Custom AC or CSP scripts to enhance your car's or map's functionality</li>
+                    <li>Tailored to your specific needs and requirements</li>
+                    <li>Professional and reliable code</li>
+                    <li>Price: Individual. Text me so we can work something out.</li>
+            </article>
+        </div>
+
+        <article>
+            <div class="contact">
+                <div>
+                    Contact me on <a href="https://discord.gg/UXf78EQ8yC" target="_blank">Discord</a> (username: <b>slluxx</b>)
+                </div>
+            </div>
+
+        </article>
+
+        <hr />
+
+        <h3>FAQ</h3>
+
+        <div id="faq"></div>
+
+    </main>
+</body>
+
+</html>
